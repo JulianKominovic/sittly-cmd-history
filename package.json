@@ -1,7 +1,7 @@
 {
-  "name": "extension-name",
-  "description": "My extension description",
-  "authors": "author",
+  "name": "sittly-cmd-history",
+  "description": "Find all commands you have used in the past quickly",
+  "authors": "Julian Kominovic",
   "version": "1.0.0",
   "scripts": {
     "build": "npm run lint && npm run format && node build.js",
@@ -14,7 +14,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.10.1",
-    "sittly-devtools": "latest"
+    "sittly-devtools": "^1.4.1"
   },
   "devDependencies": {
     "@types/react": "18.2.20",
