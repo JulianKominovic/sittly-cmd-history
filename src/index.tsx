@@ -65,19 +65,29 @@ const pages: ExtensionPages = [
           const entries = stdout.split('\n').reverse()
           const mappedEntries = new Map<string, string>()
           entries.forEach((entry: string) => {
-            const [, datetime, executionTimeAndcommand]: (
-              | string
-              | undefined
-            )[] = entry.split(':').map((item) => item.trim())
+            const [
+              ,
+              datetime,
+              executionTimeAndcommand,
+              ...conflictedSplitWithCommand
+            ]: (string | undefined)[] = entry
+              .split(':')
+              .map((item) => item.trim())
 
             if (!executionTimeAndcommand) return
             if (!datetime) return
             if (Number.isNaN(parseInt(datetime))) return
-            const [, command] = executionTimeAndcommand.split(';')
+            const [, ...command] = [
+              executionTimeAndcommand,
+              ...conflictedSplitWithCommand
+            ]
+              .join('')
+              .split(';')
 
-            if (!mappedEntries.has(command))
+            const unifiedCommand = command.join('')
+            if (!mappedEntries.has(unifiedCommand))
               mappedEntries.set(
-                command,
+                unifiedCommand,
                 Intl.DateTimeFormat(undefined, {
                   timeStyle: 'medium',
                   dateStyle: 'medium'

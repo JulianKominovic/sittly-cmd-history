@@ -179,17 +179,26 @@ var pages = [
           const entries = stdout.split("\n").reverse();
           const mappedEntries = /* @__PURE__ */ new Map();
           entries.forEach((entry) => {
-            const [, datetime, executionTimeAndcommand] = entry.split(":").map((item) => item.trim());
+            const [
+              ,
+              datetime,
+              executionTimeAndcommand,
+              ...conflictedSplitWithCommand
+            ] = entry.split(":").map((item) => item.trim());
             if (!executionTimeAndcommand)
               return;
             if (!datetime)
               return;
             if (Number.isNaN(parseInt(datetime)))
               return;
-            const [, command] = executionTimeAndcommand.split(";");
-            if (!mappedEntries.has(command))
+            const [, ...command] = [
+              executionTimeAndcommand,
+              ...conflictedSplitWithCommand
+            ].join("").split(";");
+            const unifiedCommand = command.join("");
+            if (!mappedEntries.has(unifiedCommand))
               mappedEntries.set(
-                command,
+                unifiedCommand,
                 Intl.DateTimeFormat(void 0, {
                   timeStyle: "medium",
                   dateStyle: "medium"
