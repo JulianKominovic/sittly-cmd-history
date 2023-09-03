@@ -24,13 +24,13 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 
 // src/index.tsx
-var import_react3 = window.React;
+var sittly_cmd_history3 = window.React;
 
 // node_modules/.pnpm/react-icons@4.10.1_react@18.2.0/node_modules/react-icons/lib/esm/iconBase.js
-var import_react2 = {default:window.React};
+var sittly_cmd_history2 = {default:window.React};
 
 // node_modules/.pnpm/react-icons@4.10.1_react@18.2.0/node_modules/react-icons/lib/esm/iconContext.js
-var import_react = {default:window.React};
+var sittly_cmd_history = {default:window.React};
 var DefaultContext = {
   color: void 0,
   size: void 0,
@@ -38,7 +38,7 @@ var DefaultContext = {
   style: void 0,
   attr: void 0
 };
-var IconContext = import_react.default.createContext && import_react.default.createContext(DefaultContext);
+var IconContext = sittly_cmd_history.default.createContext && sittly_cmd_history.default.createContext(DefaultContext);
 
 // node_modules/.pnpm/react-icons@4.10.1_react@18.2.0/node_modules/react-icons/lib/esm/iconBase.js
 var __assign = function() {
@@ -67,7 +67,7 @@ var __rest = function(s, e) {
 };
 function Tree2Element(tree) {
   return tree && tree.map(function(node, i) {
-    return import_react2.default.createElement(node.tag, __assign({
+    return sittly_cmd_history2.default.createElement(node.tag, __assign({
       key: i
     }, node.attr), Tree2Element(node.child));
   });
@@ -75,7 +75,7 @@ function Tree2Element(tree) {
 __name(Tree2Element, "Tree2Element");
 function GenIcon(data) {
   return function(props) {
-    return import_react2.default.createElement(IconBase, __assign({
+    return sittly_cmd_history2.default.createElement(IconBase, __assign({
       attr: __assign({}, data.attr)
     }, props), Tree2Element(data.child));
   };
@@ -90,7 +90,7 @@ function IconBase(props) {
       className = conf.className;
     if (props.className)
       className = (className ? className + " " : "") + props.className;
-    return import_react2.default.createElement("svg", __assign({
+    return sittly_cmd_history2.default.createElement("svg", __assign({
       stroke: "currentColor",
       fill: "currentColor",
       strokeWidth: "0"
@@ -102,9 +102,9 @@ function IconBase(props) {
       height: computedSize,
       width: computedSize,
       xmlns: "http://www.w3.org/2000/svg"
-    }), title && import_react2.default.createElement("title", null, title), props.children);
+    }), title && sittly_cmd_history2.default.createElement("title", null, title), props.children);
   }, "elem");
-  return IconContext !== void 0 ? import_react2.default.createElement(IconContext.Consumer, null, function(conf) {
+  return IconContext !== void 0 ? sittly_cmd_history2.default.createElement(IconContext.Consumer, null, function(conf) {
     return elem(conf);
   }) : elem(DefaultContext);
 }
@@ -134,7 +134,7 @@ var pages = [
     icon: /* @__PURE__ */ React.createElement(BsCommand, null),
     route: "/history-cmd",
     component() {
-      const [commands, setCommands] = (0, import_react3.useState)(
+      const [commands, setCommands] = (0, sittly_cmd_history3.useState)(
         /* @__PURE__ */ new Map()
       );
       const setContextMenuOptions = useServices(
@@ -164,7 +164,7 @@ var pages = [
           };
         }
       );
-      (0, import_react3.useEffect)(() => {
+      (0, sittly_cmd_history3.useEffect)(() => {
         async function init() {
           const homedir = await path.homeDir();
           const { stdout, stderr } = await cmd("tail", [
@@ -193,9 +193,9 @@ var pages = [
               return;
             const [, ...command] = [
               executionTimeAndcommand,
-              ...conflictedSplitWithCommand
+              conflictedSplitWithCommand.length > 0 ? ":" + conflictedSplitWithCommand.join(":") : ""
             ].join("").split(";");
-            const unifiedCommand = command.join("");
+            const unifiedCommand = command.join(";");
             if (!mappedEntries.has(unifiedCommand))
               mappedEntries.set(
                 unifiedCommand,

@@ -79,12 +79,15 @@ const pages: ExtensionPages = [
             if (Number.isNaN(parseInt(datetime))) return
             const [, ...command] = [
               executionTimeAndcommand,
-              ...conflictedSplitWithCommand
+              conflictedSplitWithCommand.length > 0
+                ? ':' + conflictedSplitWithCommand.join(':')
+                : ''
             ]
               .join('')
               .split(';')
 
-            const unifiedCommand = command.join('')
+            const unifiedCommand = command.join(';')
+
             if (!mappedEntries.has(unifiedCommand))
               mappedEntries.set(
                 unifiedCommand,
