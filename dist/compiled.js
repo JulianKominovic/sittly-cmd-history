@@ -111,6 +111,10 @@ function IconBase(props) {
 __name(IconBase, "IconBase");
 
 // node_modules/.pnpm/react-icons@4.10.1_react@18.2.0/node_modules/react-icons/bs/index.esm.js
+function BsClipboard(props) {
+  return GenIcon({ "tag": "svg", "attr": { "fill": "currentColor", "viewBox": "0 0 16 16" }, "child": [{ "tag": "path", "attr": { "d": "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" } }, { "tag": "path", "attr": { "d": "M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" } }] })(props);
+}
+__name(BsClipboard, "BsClipboard");
 function BsCommand(props) {
   return GenIcon({ "tag": "svg", "attr": { "fill": "currentColor", "viewBox": "0 0 16 16" }, "child": [{ "tag": "path", "attr": { "d": "M3.5 2A1.5 1.5 0 0 1 5 3.5V5H3.5a1.5 1.5 0 1 1 0-3zM6 5V3.5A2.5 2.5 0 1 0 3.5 6H5v4H3.5A2.5 2.5 0 1 0 6 12.5V11h4v1.5a2.5 2.5 0 1 0 2.5-2.5H11V6h1.5A2.5 2.5 0 1 0 10 3.5V5H6zm4 1v4H6V6h4zm1-1V3.5A1.5 1.5 0 1 1 12.5 5H11zm0 6h1.5a1.5 1.5 0 1 1-1.5 1.5V11zm-6 0v1.5A1.5 1.5 0 1 1 3.5 11H5z" } }] })(props);
 }
@@ -120,8 +124,8 @@ __name(BsCommand, "BsCommand");
 var { register, api, components, hooks } = window.SittlyDevtools;
 var { shell, clipboard, path } = api;
 var { cmd } = shell;
-var { useRouter } = hooks;
-var { pasteToCurrentWindow } = clipboard;
+var { useRouter, useServices } = hooks;
+var { pasteToCurrentWindow, copyToClipboard } = clipboard;
 var { Command } = components;
 var pages = [
   {
@@ -133,6 +137,9 @@ var pages = [
       const [commands, setCommands] = (0, import_react3.useState)(
         /* @__PURE__ */ new Map()
       );
+      const setContextMenuOptions = useServices(
+        (state) => state.setContextMenuOptions
+      );
       const mappedItems = [...commands.entries()].map(
         ([command, datetime]) => {
           return {
@@ -141,6 +148,18 @@ var pages = [
             mainActionLabel: "Paste to app",
             onClick: () => {
               pasteToCurrentWindow(command);
+            },
+            onHighlight() {
+              setContextMenuOptions([
+                {
+                  title: "Copy to clipboard",
+                  icon: /* @__PURE__ */ React.createElement(BsClipboard, null),
+                  mainActionLabel: "Copy to clipboard",
+                  onClick() {
+                    copyToClipboard(command);
+                  }
+                }
+              ]);
             }
           };
         }

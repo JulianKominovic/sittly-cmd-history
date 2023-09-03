@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BsCommand } from 'react-icons/bs'
+import { BsClipboard, BsCommand } from 'react-icons/bs'
 import {
   type ExtensionPages,
   type ExtensionMetadata,
@@ -9,8 +9,8 @@ import {
 const { register, api, components, hooks } = window.SittlyDevtools
 const { shell, clipboard, path } = api
 const { cmd } = shell
-const { useRouter } = hooks
-const { pasteToCurrentWindow } = clipboard
+const { useRouter, useServices } = hooks
+const { pasteToCurrentWindow, copyToClipboard } = clipboard
 const { Command } = components
 const pages: ExtensionPages = [
   {
@@ -22,6 +22,9 @@ const pages: ExtensionPages = [
       const [commands, setCommands] = useState<Map<string, string>>(
         new Map<string, string>()
       )
+      const setContextMenuOptions = useServices(
+        (state) => state.setContextMenuOptions
+      )
       const mappedItems: ListItem[] = [...commands.entries()].map(
         ([command, datetime]) => {
           return {
@@ -30,6 +33,18 @@ const pages: ExtensionPages = [
             mainActionLabel: 'Paste to app',
             onClick: () => {
               pasteToCurrentWindow(command)
+            },
+            onHighlight() {
+              setContextMenuOptions([
+                {
+                  title: 'Copy to clipboard',
+                  icon: <BsClipboard />,
+                  mainActionLabel: 'Copy to clipboard',
+                  onClick() {
+                    copyToClipboard(command)
+                  }
+                }
+              ])
             }
           }
         }
