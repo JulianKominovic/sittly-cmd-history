@@ -3,11 +3,13 @@ import { BsCommand } from 'react-icons/bs'
 import {
   type ExtensionPages,
   type ExtensionMetadata,
-  type ListItem
+  type ListItem,
+  type ExtensionNoResultItems
 } from 'sittly-devtools/dist/types'
-const { register, api, components } = window.SittlyDevtools
-const { shell, clipboard } = api
+const { register, api, components, hooks } = window.SittlyDevtools
+const { shell, clipboard, path } = api
 const { cmd } = shell
+const { useRouter } = hooks
 const { pasteToCurrentWindow } = clipboard
 const { Command } = components
 const pages: ExtensionPages = [
@@ -17,46 +19,57 @@ const pages: ExtensionPages = [
     icon: <BsCommand />,
     route: '/history-cmd',
     component() {
-      const [commands, setCommands] = useState<
-        {
-          datetime: string
-          command: string
-        }[]
-      >([])
-      const mappedItems: ListItem[] = commands.map(({ command, datetime }) => {
-        return {
-          title: command,
-          description: datetime,
-
-          mainActionLabel: 'Paste command',
-          onClick: () => {
-            pasteToCurrentWindow(command)
+      const [commands, setCommands] = useState<Map<string, string>>(
+        new Map<string, string>()
+      )
+      const mappedItems: ListItem[] = [...commands.entries()].map(
+        ([command, datetime]) => {
+          return {
+            title: command,
+            description: datetime,
+            mainActionLabel: 'Paste to app',
+            onClick: () => {
+              pasteToCurrentWindow(command)
+            }
           }
         }
-      })
+      )
       useEffect(() => {
         async function init() {
-          const { stdout: bashDir } = await cmd(`$HISTFILE`, [])
-          const { stdout, stderr } = await cmd('cat $HISTFILE', [bashDir + ''])
-          console.log({
-            stdout,
-            stderr
-          })
+          const homedir = await path.homeDir()
+          const { stdout, stderr } = await cmd('tail', [
+            '-n',
+            '2000',
+            await path.resolve(homedir, '.zsh_history')
+          ])
+
           if (stdout === null) {
             console.log('Error', stderr)
             return
           }
-          const entries = stdout.split('\n')
-          const mappedEntries: {
-            datetime: string
-            command: string
-          }[] = entries.map((entry: string) => {
-            const [, datetime, command] = entry.split('  ')
-            return {
-              command,
-              datetime
-            }
+          const entries = stdout.split('\n').reverse()
+          const mappedEntries = new Map<string, string>()
+          entries.forEach((entry: string) => {
+            const [, datetime, executionTimeAndcommand]: (
+              | string
+              | undefined
+            )[] = entry.split(':').map((item) => item.trim())
+
+            if (!executionTimeAndcommand) return
+            if (!datetime) return
+            if (Number.isNaN(parseInt(datetime))) return
+            const [, command] = executionTimeAndcommand.split(';')
+
+            if (!mappedEntries.has(command))
+              mappedEntries.set(
+                command,
+                Intl.DateTimeFormat(undefined, {
+                  timeStyle: 'medium',
+                  dateStyle: 'medium'
+                }).format(new Date(parseInt(datetime) * 1000))
+              )
           })
+
           setCommands(mappedEntries)
         }
         init()
@@ -65,6 +78,22 @@ const pages: ExtensionPages = [
     }
   }
 ]
+
+const noResults: ExtensionNoResultItems = () => {
+  const { goTo } = useRouter()
+  return [
+    {
+      title: 'Find inside my command history',
+      description: "maybe it's a command",
+      icon: <BsCommand />,
+      mainActionLabel: 'Use command history extension',
+      onClick: () => {
+        goTo('/history-cmd')
+      }
+    }
+  ]
+}
+
 /**
  * Metadata is really important, it's used to display your extension in the app.
  * @see docs.com
@@ -78,5 +107,6 @@ const metadata: ExtensionMetadata = {
 
 register({
   pages,
-  metadata
+  metadata,
+  noResults
 })

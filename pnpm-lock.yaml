@@ -15,9 +15,9 @@ dependencies:
     specifier: 4.10.1
     version: 4.10.1(react@18.2.0)
   sittly-devtools:
-    specifier: ^1.4.1
+    specifier: ^1.6.0
     version: >-
-      1.4.1(@babel/plugin-proposal-class-properties@7.18.6)(@babel/preset-env@7.22.14)(@babel/preset-react@7.22.5)(@babel/preset-typescript@7.22.11)(@chialab/esbuild-plugin-html@0.17.3)(@originjs/vite-plugin-commonjs@1.0.3)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-dialog@1.0.4)(@radix-ui/react-icons@1.3.0)(@radix-ui/react-popover@1.0.6)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-slider@1.1.2)(@radix-ui/react-slot@1.0.2)(@radix-ui/react-switch@1.0.3)(@supabase/auth-helpers-nextjs@0.7.4)(@supabase/supabase-js@2.33.1)(@swc/wasm-web@1.3.81)(@tauri-apps/api@1.4.0)(@tauri-apps/cli@1.4.0)(@types/node@20.5.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(@vitejs/plugin-react@4.0.4)(autoprefixer@10.4.15)(babel-loader@9.1.3)(buffer@6.0.3)(class-variance-authority@0.6.1)(clsx@1.2.1)(cmdk@0.2.0)(esbuild@0.19.0)(file-type@18.5.0)(framer-motion@10.16.2)(lucide-react@0.260.0)(postcss@8.4.29)(react-dom@18.2.0)(react-icons@4.10.1)(react-router-dom@6.15.0)(react-router@6.15.0)(react-virtuoso@4.5.0)(react@18.2.0)(tailwind-merge@1.14.0)(tailwindcss-animate@1.0.7)(tailwindcss@3.3.3)(typescript@5.1.6)(unicode-emoji-utils@1.1.2)(unicode-emoji@2.4.0)(usehooks-ts@2.9.1)(vite-plugin-require@1.1.10)(vite@4.4.9)(webpack-cli@5.1.4)(webpack-dev-server@4.15.1)(webpack-node-externals@3.0.0)(webpack@5.88.2)(zustand@4.4.1)
+      1.6.0(@babel/plugin-proposal-class-properties@7.18.6)(@babel/preset-env@7.22.14)(@babel/preset-react@7.22.5)(@babel/preset-typescript@7.22.11)(@chialab/esbuild-plugin-html@0.17.3)(@originjs/vite-plugin-commonjs@1.0.3)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-dialog@1.0.4)(@radix-ui/react-icons@1.3.0)(@radix-ui/react-popover@1.0.6)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-slider@1.1.2)(@radix-ui/react-slot@1.0.2)(@radix-ui/react-switch@1.0.3)(@supabase/auth-helpers-nextjs@0.7.4)(@supabase/supabase-js@2.33.1)(@swc/wasm-web@1.3.82)(@tauri-apps/api@1.4.0)(@tauri-apps/cli@1.4.0)(@types/node@20.5.9)(@types/react-dom@18.2.7)(@types/react@18.2.20)(@vitejs/plugin-react@4.0.4)(autoprefixer@10.4.15)(babel-loader@9.1.3)(buffer@6.0.3)(chrono-node@2.6.6)(class-variance-authority@0.6.1)(clsx@1.2.1)(cmdk@0.2.0)(dayjs@1.11.9)(esbuild@0.19.0)(file-type@18.5.0)(framer-motion@10.16.2)(lucide-react@0.260.0)(postcss@8.4.29)(pretty-bytes@6.1.1)(react-dom@18.2.0)(react-icons@4.10.1)(react-router-dom@6.15.0)(react-router@6.15.0)(react-virtuoso@4.5.0)(react@18.2.0)(tailwind-merge@1.14.0)(tailwindcss-animate@1.0.7)(tailwindcss@3.3.3)(typescript@5.1.6)(unicode-emoji-utils@1.1.2)(unicode-emoji@2.4.0)(usehooks-ts@2.9.1)(vite-plugin-require@1.1.10)(vite@4.4.9)(webpack-cli@5.1.4)(webpack-dev-server@4.15.1)(webpack-node-externals@3.0.0)(webpack@5.88.2)(zustand@4.4.1)
 
 devDependencies:
   '@types/react':
@@ -384,6 +384,7 @@ packages:
   /@babel/plugin-proposal-class-properties@7.18.6(@babel/core@7.22.11):
     resolution: {integrity: sha512-cumfXOF0+nzZrrN8Rf0t7M+tF6sZc7vhQwYQck9q1/5w2OExlD+b4v4RpMJFaV1Z7WcDRgO6FqvxqxGlwo+RHQ==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -2798,7 +2799,7 @@ packages:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
       '@supabase/supabase-js': 2.33.1
-      jose: 4.14.4
+      jose: 4.14.5
     dev: false
 
   /@supabase/functions-js@2.1.4:
@@ -2862,8 +2863,8 @@ packages:
       - supports-color
     dev: false
 
-  /@swc/wasm-web@1.3.81:
-    resolution: {integrity: sha512-E0ZlmMtqTq0DPb7b8MvJjPNrRslWFfwsZrqzyrc4roi6wJv68BFpARjv81w82rcUVpjTAq52kQ2zp5XRkmTxHA==}
+  /@swc/wasm-web@1.3.82:
+    resolution: {integrity: sha512-UD6IlaXtPhgOwa3SgxVwk4e4QcXLjxQyMY5MBPu1n8Np/EM6+nnoLgwv24Nb+SNIQDNebSRycSgOlWLPnm1ZyQ==}
     dev: false
 
   /@tauri-apps/api@1.4.0:
@@ -2986,26 +2987,26 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/bonjour@3.5.10:
     resolution: {integrity: sha512-p7ienRMiS41Nu2/igbJxxLDWrSZ0WxM8UQgCeO9KhoVF7cOVFkrKsiDr1EsJIla8vV3oEEjGcz11jc5yimhzZw==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/connect-history-api-fallback@1.5.0:
     resolution: {integrity: sha512-4x5FkPpLipqwthjPsF7ZRbOv3uoLUFkTA9G9v583qi4pACvq0uTELrB8OLUzPWUI4IJIyvM85vzkV1nyiI2Lig==}
     dependencies:
       '@types/express-serve-static-core': 4.17.36
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/eslint-scope@3.7.4:
@@ -3029,7 +3030,7 @@ packages:
   /@types/express-serve-static-core@4.17.36:
     resolution: {integrity: sha512-zbivROJ0ZqLAtMzgzIUC4oNqDG9iF0lSsAqpOD9kbs5xcIM3dTiyuHvBc7R8MtWBp3AAWGaovJa+wzWPjLYW7Q==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
       '@types/qs': 6.9.8
       '@types/range-parser': 1.2.4
       '@types/send': 0.17.1
@@ -3051,7 +3052,7 @@ packages:
   /@types/http-proxy@1.17.11:
     resolution: {integrity: sha512-HC8G7c1WmaF2ekqpnFq626xd3Zz0uvaqFmBJNRZCGEZCXkvSdJoNFn/8Ygbd9fKNQj8UzLdCETaI0UWPAjK7IA==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/json-schema@7.0.12:
@@ -3069,8 +3070,8 @@ packages:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
     dev: false
 
-  /@types/node@20.5.7:
-    resolution: {integrity: sha512-dP7f3LdZIysZnmvP3ANJYTSwg+wLLl8p7RqniVlV7j+oXSXAbt9h0WIBFmJy5inWZoX9wZN6eXx+YXd9Rh3RBA==}
+  /@types/node@20.5.9:
+    resolution: {integrity: sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==}
     dev: false
 
   /@types/phoenix@1.6.1:
@@ -3116,7 +3117,7 @@ packages:
     resolution: {integrity: sha512-Cwo8LE/0rnvX7kIIa3QHCkcuF21c05Ayb0ZfxPiv0W8VRiZiNW/WuRupHKpqqGVGf7SUA44QSOUKaEd9lIrd/Q==}
     dependencies:
       '@types/mime': 1.3.2
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/serve-index@1.9.1:
@@ -3130,25 +3131,25 @@ packages:
     dependencies:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/sockjs@0.3.33:
     resolution: {integrity: sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/websocket@1.0.6:
     resolution: {integrity: sha512-JXkliwz93B2cMWOI1ukElQBPN88vMg3CruvW4KVSKpflt3NyNCJImnhIuB/f97rG7kakqRJGFiwkA895Kn02Dg==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@types/ws@8.5.5:
     resolution: {integrity: sha512-lwhs8hktwxSjf9UaZ9tG5M03PGogvFaH8gUgLNbN9HKIg0dvv6q+gkSuJ8HN4/VbyxkuLzCjlN7GquQ0gUJfIg==}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
     dev: false
 
   /@typescript-eslint/eslint-plugin@6.5.0(@typescript-eslint/parser@6.5.0)(eslint@8.48.0)(typescript@5.1.6):
@@ -3292,7 +3293,7 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.11)
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.11)
       react-refresh: 0.14.0
-      vite: 4.4.9(@types/node@20.5.7)
+      vite: 4.4.9(@types/node@20.5.9)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -3743,7 +3744,7 @@ packages:
     dependencies:
       browserslist: 4.21.10
       caniuse-lite: 1.0.30001525
-      fraction.js: 4.3.4
+      fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
       postcss: 8.4.29
@@ -3887,7 +3888,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001525
-      electron-to-chromium: 1.4.507
+      electron-to-chromium: 1.4.508
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: false
@@ -3989,6 +3990,13 @@ packages:
   /chrome-trace-event@1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
+    dev: false
+
+  /chrono-node@2.6.6:
+    resolution: {integrity: sha512-RObSvo49wRL/ek6U4lMuZjmCi//gLM2GsHBMauIw/50fBbP6To3F99vn88IRL9w4qC39tFRnJZc6uiGrOi1oGw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      dayjs: 1.11.9
     dev: false
 
   /class-variance-authority@0.6.1:
@@ -4357,6 +4365,10 @@ packages:
       type: 1.2.0
     dev: false
 
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
+
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -4510,8 +4522,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium@1.4.507:
-    resolution: {integrity: sha512-brvPFnO1lu3UYBpBht2qWw9qqhdG4htTjT90/9oOJmxQ77VvTxL9+ghErFqQzgj7n8268ONAmlebqjBR/S+qgA==}
+  /electron-to-chromium@1.4.508:
+    resolution: {integrity: sha512-FFa8QKjQK/A5QuFr2167myhMesGrhlOBD+3cYNxO9/S4XzHEXesyTD/1/xF644gC8buFPz3ca6G1LOQD0tZrrg==}
     dev: false
 
   /emoji-regex@10.2.1:
@@ -5483,8 +5495,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /fraction.js@4.3.4:
-    resolution: {integrity: sha512-pwiTgt0Q7t+GHZA4yaLjObx4vXmmdcS0iSJ19o8d/goUGgItX9UZWKWNnLHehxviD8wU2IWRsnR8cD5+yOJP2Q==}
+  /fraction.js@4.3.6:
+    resolution: {integrity: sha512-n2aZ9tNfYDwaHhvFTkhFErqOMIb8uyzSQ+vGJBjZyanAKZVbGUQ1sngfk9FdkBw7G26O7AgNjLcecLffD1c7eg==}
     dev: false
 
   /framer-motion@10.16.2(react-dom@18.2.0)(react@18.2.0):
@@ -6115,7 +6127,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -6125,8 +6137,8 @@ packages:
     hasBin: true
     dev: false
 
-  /jose@4.14.4:
-    resolution: {integrity: sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==}
+  /jose@4.14.5:
+    resolution: {integrity: sha512-56ns1XlSI8d5V0t7hilPu8dMbE4YIwrTJU6e7bV1Abyu6oel4tSc4YmD742MoWV3U+vn7O0WlKpinzu2DP0HWw==}
     dev: false
 
   /js-tokens@4.0.0:
@@ -6900,6 +6912,11 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  /pretty-bytes@6.1.1:
+    resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
+
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: false
@@ -7459,8 +7476,8 @@ packages:
   /signal-exit@3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
-  ? /sittly-devtools@1.4.1(@babel/plugin-proposal-class-properties@7.18.6)(@babel/preset-env@7.22.14)(@babel/preset-react@7.22.5)(@babel/preset-typescript@7.22.11)(@chialab/esbuild-plugin-html@0.17.3)(@originjs/vite-plugin-commonjs@1.0.3)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-dialog@1.0.4)(@radix-ui/react-icons@1.3.0)(@radix-ui/react-popover@1.0.6)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-slider@1.1.2)(@radix-ui/react-slot@1.0.2)(@radix-ui/react-switch@1.0.3)(@supabase/auth-helpers-nextjs@0.7.4)(@supabase/supabase-js@2.33.1)(@swc/wasm-web@1.3.81)(@tauri-apps/api@1.4.0)(@tauri-apps/cli@1.4.0)(@types/node@20.5.7)(@types/react-dom@18.2.7)(@types/react@18.2.20)(@vitejs/plugin-react@4.0.4)(autoprefixer@10.4.15)(babel-loader@9.1.3)(buffer@6.0.3)(class-variance-authority@0.6.1)(clsx@1.2.1)(cmdk@0.2.0)(esbuild@0.19.0)(file-type@18.5.0)(framer-motion@10.16.2)(lucide-react@0.260.0)(postcss@8.4.29)(react-dom@18.2.0)(react-icons@4.10.1)(react-router-dom@6.15.0)(react-router@6.15.0)(react-virtuoso@4.5.0)(react@18.2.0)(tailwind-merge@1.14.0)(tailwindcss-animate@1.0.7)(tailwindcss@3.3.3)(typescript@5.1.6)(unicode-emoji-utils@1.1.2)(unicode-emoji@2.4.0)(usehooks-ts@2.9.1)(vite-plugin-require@1.1.10)(vite@4.4.9)(webpack-cli@5.1.4)(webpack-dev-server@4.15.1)(webpack-node-externals@3.0.0)(webpack@5.88.2)(zustand@4.4.1)
-  : resolution: {integrity: sha512-qHH6lQoOjKhnLnko90L/DY7OgoSPBp+eRyxHJ2/b7561eWROl8gdoeJXB6b4i9LVglI6IMKGulsXgUpJ6Ls0yw==}
+  ? /sittly-devtools@1.6.0(@babel/plugin-proposal-class-properties@7.18.6)(@babel/preset-env@7.22.14)(@babel/preset-react@7.22.5)(@babel/preset-typescript@7.22.11)(@chialab/esbuild-plugin-html@0.17.3)(@originjs/vite-plugin-commonjs@1.0.3)(@radix-ui/react-checkbox@1.0.4)(@radix-ui/react-dialog@1.0.4)(@radix-ui/react-icons@1.3.0)(@radix-ui/react-popover@1.0.6)(@radix-ui/react-radio-group@1.1.3)(@radix-ui/react-slider@1.1.2)(@radix-ui/react-slot@1.0.2)(@radix-ui/react-switch@1.0.3)(@supabase/auth-helpers-nextjs@0.7.4)(@supabase/supabase-js@2.33.1)(@swc/wasm-web@1.3.82)(@tauri-apps/api@1.4.0)(@tauri-apps/cli@1.4.0)(@types/node@20.5.9)(@types/react-dom@18.2.7)(@types/react@18.2.20)(@vitejs/plugin-react@4.0.4)(autoprefixer@10.4.15)(babel-loader@9.1.3)(buffer@6.0.3)(chrono-node@2.6.6)(class-variance-authority@0.6.1)(clsx@1.2.1)(cmdk@0.2.0)(dayjs@1.11.9)(esbuild@0.19.0)(file-type@18.5.0)(framer-motion@10.16.2)(lucide-react@0.260.0)(postcss@8.4.29)(pretty-bytes@6.1.1)(react-dom@18.2.0)(react-icons@4.10.1)(react-router-dom@6.15.0)(react-router@6.15.0)(react-virtuoso@4.5.0)(react@18.2.0)(tailwind-merge@1.14.0)(tailwindcss-animate@1.0.7)(tailwindcss@3.3.3)(typescript@5.1.6)(unicode-emoji-utils@1.1.2)(unicode-emoji@2.4.0)(usehooks-ts@2.9.1)(vite-plugin-require@1.1.10)(vite@4.4.9)(webpack-cli@5.1.4)(webpack-dev-server@4.15.1)(webpack-node-externals@3.0.0)(webpack@5.88.2)(zustand@4.4.1)
+  : resolution: {integrity: sha512-qjhMS22Umgti3r3+4QLa+zdge4CtcCasqO0IiNSs5o3d0hCurgFALhyWFFewdN6fFPRuACQw5dwkWbursdmQtQ==}
     peerDependencies:
       '@babel/plugin-proposal-class-properties': ^7.18.6
       '@babel/preset-env': ^7.22.10
@@ -7488,14 +7505,17 @@ packages:
       autoprefixer: ^10.4.14
       babel-loader: ^9.1.3
       buffer: ^6.0.3
+      chrono-node: ^2.6.5
       class-variance-authority: ^0.6.1
       clsx: ^1.2.1
       cmdk: ^0.2.0
+      dayjs: ^1.11.9
       esbuild: ^0.19.1
       file-type: ^18.5.0
       framer-motion: ^10.12.18
       lucide-react: ^0.260.0
       postcss: ^8.4.24
+      pretty-bytes: ^6.1.1
       react: ^18.2.0
       react-dom: ^18.2.0
       react-icons: ^4.9.0
@@ -7533,24 +7553,27 @@ packages:
       '@radix-ui/react-switch': 1.0.3(@types/react-dom@18.2.7)(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
       '@supabase/auth-helpers-nextjs': 0.7.4(@supabase/supabase-js@2.33.1)
       '@supabase/supabase-js': 2.33.1
-      '@swc/wasm-web': 1.3.81
+      '@swc/wasm-web': 1.3.82
       '@tauri-apps/api': 1.4.0
       '@tauri-apps/cli': 1.4.0
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
       '@types/react': 18.2.20
       '@types/react-dom': 18.2.7
       '@vitejs/plugin-react': 4.0.4(vite@4.4.9)
       autoprefixer: 10.4.15(postcss@8.4.29)
       babel-loader: 9.1.3(@babel/core@7.22.11)(webpack@5.88.2)
       buffer: 6.0.3
+      chrono-node: 2.6.6
       class-variance-authority: 0.6.1
       clsx: 1.2.1
       cmdk: 0.2.0(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
+      dayjs: 1.11.9
       esbuild: 0.19.0
       file-type: 18.5.0
       framer-motion: 10.16.2(react-dom@18.2.0)(react@18.2.0)
       lucide-react: 0.260.0(react@18.2.0)
       postcss: 8.4.29
+      pretty-bytes: 6.1.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-icons: 4.10.1(react@18.2.0)
@@ -7564,7 +7587,7 @@ packages:
       unicode-emoji: 2.4.0
       unicode-emoji-utils: 1.1.2
       usehooks-ts: 2.9.1(react-dom@18.2.0)(react@18.2.0)
-      vite: 4.4.9(@types/node@20.5.7)
+      vite: 4.4.9(@types/node@20.5.9)
       vite-plugin-require: 1.1.10(css-loader@6.8.1)(esbuild@0.19.0)(prettier@3.0.3)(react-dom@18.2.0)(react@18.2.0)(vite@4.4.9)(webpack-cli@5.1.4)
       webpack: 5.88.2(esbuild@0.19.0)(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
@@ -8165,7 +8188,7 @@ packages:
       '@babel/parser': 7.22.14
       '@babel/traverse': 7.22.11
       '@babel/types': 7.22.11
-      vite: 4.4.9(@types/node@20.5.7)
+      vite: 4.4.9(@types/node@20.5.9)
       vue-loader: 15.10.2(css-loader@6.8.1)(prettier@3.0.3)(react-dom@18.2.0)(react@18.2.0)(webpack@5.88.2)
       webpack: 5.88.2(esbuild@0.19.0)(webpack-cli@5.1.4)
     transitivePeerDependencies:
@@ -8234,7 +8257,7 @@ packages:
       - whiskers
     dev: false
 
-  /vite@4.4.9(@types/node@20.5.7):
+  /vite@4.4.9(@types/node@20.5.9):
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -8262,7 +8285,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.5.7
+      '@types/node': 20.5.9
       esbuild: 0.18.20
       postcss: 8.4.29
       rollup: 3.28.1

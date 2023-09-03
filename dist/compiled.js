@@ -117,9 +117,10 @@ function BsCommand(props) {
 __name(BsCommand, "BsCommand");
 
 // src/index.tsx
-var { register, api, components } = window.SittlyDevtools;
-var { shell, clipboard } = api;
+var { register, api, components, hooks } = window.SittlyDevtools;
+var { shell, clipboard, path } = api;
 var { cmd } = shell;
+var { useRouter } = hooks;
 var { pasteToCurrentWindow } = clipboard;
 var { Command } = components;
 var pages = [
@@ -129,36 +130,52 @@ var pages = [
     icon: /* @__PURE__ */ React.createElement(BsCommand, null),
     route: "/history-cmd",
     component() {
-      const [commands, setCommands] = (0, import_react3.useState)([]);
-      const mappedItems = commands.map(({ command, datetime }) => {
-        return {
-          title: command,
-          description: datetime,
-          mainActionLabel: "Paste command",
-          onClick: () => {
-            pasteToCurrentWindow(command);
-          }
-        };
-      });
+      const [commands, setCommands] = (0, import_react3.useState)(
+        /* @__PURE__ */ new Map()
+      );
+      const mappedItems = [...commands.entries()].map(
+        ([command, datetime]) => {
+          return {
+            title: command,
+            description: datetime,
+            mainActionLabel: "Paste to app",
+            onClick: () => {
+              pasteToCurrentWindow(command);
+            }
+          };
+        }
+      );
       (0, import_react3.useEffect)(() => {
         async function init() {
-          const { stdout: bashDir } = await cmd(`$HISTFILE`, []);
-          const { stdout, stderr } = await cmd("cat $HISTFILE", [bashDir + ""]);
-          console.log({
-            stdout,
-            stderr
-          });
+          const homedir = await path.homeDir();
+          const { stdout, stderr } = await cmd("tail", [
+            "-n",
+            "2000",
+            await path.resolve(homedir, ".zsh_history")
+          ]);
           if (stdout === null) {
             console.log("Error", stderr);
             return;
           }
-          const entries = stdout.split("\n");
-          const mappedEntries = entries.map((entry) => {
-            const [, datetime, command] = entry.split("  ");
-            return {
-              command,
-              datetime
-            };
+          const entries = stdout.split("\n").reverse();
+          const mappedEntries = /* @__PURE__ */ new Map();
+          entries.forEach((entry) => {
+            const [, datetime, executionTimeAndcommand] = entry.split(":").map((item) => item.trim());
+            if (!executionTimeAndcommand)
+              return;
+            if (!datetime)
+              return;
+            if (Number.isNaN(parseInt(datetime)))
+              return;
+            const [, command] = executionTimeAndcommand.split(";");
+            if (!mappedEntries.has(command))
+              mappedEntries.set(
+                command,
+                Intl.DateTimeFormat(void 0, {
+                  timeStyle: "medium",
+                  dateStyle: "medium"
+                }).format(new Date(parseInt(datetime) * 1e3))
+              );
           });
           setCommands(mappedEntries);
         }
@@ -169,6 +186,20 @@ var pages = [
     }
   }
 ];
+var noResults = /* @__PURE__ */ __name(() => {
+  const { goTo } = useRouter();
+  return [
+    {
+      title: "Find inside my command history",
+      description: "maybe it's a command",
+      icon: /* @__PURE__ */ React.createElement(BsCommand, null),
+      mainActionLabel: "Use command history extension",
+      onClick: () => {
+        goTo("/history-cmd");
+      }
+    }
+  ];
+}, "noResults");
 var metadata = {
   name: "Commands history",
   description: "Find all commands you have used in the past quickly",
@@ -177,5 +208,6 @@ var metadata = {
 };
 register({
   pages,
-  metadata
+  metadata,
+  noResults
 });
